@@ -31,13 +31,13 @@ class UsuarioDetailsServiceTest {
         Usuario usuario = new Usuario();
         usuario.setNome("Professor Teste");
         usuario.setEmail("prof@fesac.com");
-        usuario.setSenha("senha123");
+        usuario.setSenha("Senha@123");
         when(userRepository.findByEmail("prof@fesac.com")).thenReturn(Optional.of(usuario));
 
         UserDetails detalhes = service.loadUserByUsername("prof@fesac.com");
 
         assertEquals("prof@fesac.com", detalhes.getUsername());
-        assertEquals("senha123", detalhes.getPassword());
+        assertEquals("Senha@123", detalhes.getPassword());
     }
 
     @Test
