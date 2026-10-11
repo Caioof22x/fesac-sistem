@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>Notas | FESAC</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <div class="app">
+        <aside class="sidebar">
+            <div class="brand"><span>F</span>
+                <div><strong>FESAC</strong><small>Sistema de Gestão</small></div>
+            </div>
+            <nav><a href="index.html">⌂ Início</a><a href="salas.html">▣ Salas</a><a href="criterios.html">✓
+                    Critérios</a><a class="active" href="notas.html">✎ Notas</a><a href="ranking.html">🏆 Ranking</a></nav>
+            <div class="user-box">
+                <div class="avatar">P</div>
+                <div><strong>Professor</strong><small>Usuário autenticado</small></div>
+            </div>
+        </aside>
+        <main>
+            <header>
+                <div>
+                    <h1>Lançamento de Notas</h1>
+                    <p>Registre a pontuação da sala em cada critério.</p>
+                </div>
+            </header>
+            <section class="panel">
+                <div class="form-grid">
+                    <div><label>Selecionar sala</label><select>
+                            <option>3º A</option>
+                            <option>3º B</option>
+                        </select></div>
+                </div>
+            </section>
+            <section class="panel">
+                <h2>Notas da sala</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Critério</th>
+                            <th>Máximo</th>
+                            <th>Nota</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Decoração da sala</td>
+                            <td>10</td>
+                            <td><input class="small-input" type="number" min="0" max="10" placeholder="0"></td>
+                        </tr>
+                        <tr>
+                            <td>Participação dos alunos</td>
+                            <td>10</td>
+                            <td><input class="small-input" type="number" min="0" max="10" placeholder="0"></td>
+                        </tr>
+                        <tr>
+                            <td>Disciplina</td>
+                            <td>10</td>
+                            <td><input class="small-input" type="number" min="0" max="10" placeholder="0"></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="actions"><button class="btn primary">Salvar notas</button></div>
+            </section>
+            <footer>Sistema FESAC • Colégio Antônio Carlos</footer>
+        </main>
+    </div>
+</body>
+
+</html>

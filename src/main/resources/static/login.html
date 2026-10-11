@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>Login | FESAC</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body class="login-page">
+    <div class="login-card">
+        <div class="logo">F</div>
+        <h1>Sistema FESAC</h1>
+        <p>Entre para gerenciar as notas da competição.</p>
+        <form id="form-login" novalidate>
+            <label for="email">E-mail</label>
+            <input id="email" type="email" autocomplete="username" placeholder="Digite seu e-mail">
+            <label for="senha">Senha</label>
+            <input id="senha" type="password" autocomplete="current-password" placeholder="Digite sua senha">
+            <p class="erro-login" id="erro" role="alert"></p>
+            <button class="btn primary full" id="entrar" type="submit">Entrar</button>
+        </form><small>Acesso
+            restrito aos professores cadastrados.</small>
+    </div>
+<script src="js/login.js"></script>
+</body>
+
+</html>
