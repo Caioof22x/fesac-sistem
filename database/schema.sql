@@ -24,3 +24,8 @@ create table nota (
     fk_criterio integer not null references criterio(id),
     fk_usuario integer not null references usuario(id) 
 );
+
+alter table usuario enable row level security;
+alter table sala enable row level security;
+alter table criterio enable row level security;
+alter table nota enable row level security;
