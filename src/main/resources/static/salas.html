@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>Salas | FESAC</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <div class="app">
+        <aside class="sidebar">
+            <div class="brand"><span>F</span>
+                <div><strong>FESAC</strong><small>Sistema de Gestão</small></div>
+            </div>
+            <nav><a href="index.html">⌂ Início</a><a class="active" href="salas.html">▣ Salas</a><a href="criterios.html">✓
+                    Critérios</a><a href="notas.html">✎ Notas</a><a href="ranking.html">🏆 Ranking</a></nav>
+            <div class="user-box">
+                <div class="avatar">P</div>
+                <div><strong>Professor</strong><small>Usuário autenticado</small></div>
+            </div>
+        </aside>
+        <main>
+            <header>
+                <div>
+                    <h1>Cadastro de Salas</h1>
+                    <p>Cadastre e consulte as salas participantes.</p>
+                </div>
+            </header>
+            <section class="panel form-panel">
+                <h2>Nova sala</h2>
+                <form class="form-grid">
+                    <div><label>Nome da sala</label><input placeholder="Ex.: 3º A"></div><button
+                        class="btn primary">Cadastrar sala</button>
+                </form>
+            </section>
+            <section class="panel">
+                <h2>Salas cadastradas</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Sala</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>3º A</td>
+                            <td><button class="link">Editar</button> <button class="link danger">Excluir</button></td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>3º B</td>
+                            <td><button class="link">Editar</button> <button class="link danger">Excluir</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+            <footer>Sistema FESAC • Colégio Antônio Carlos</footer>
+        </main>
+    </div>
+<script src="js/cadastro.js"></script>
+</body>
+
+</html>

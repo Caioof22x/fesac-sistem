@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>Critérios | FESAC</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <div class="app">
+        <aside class="sidebar">
+            <div class="brand"><span>F</span>
+                <div><strong>FESAC</strong><small>Sistema de Gestão</small></div>
+            </div>
+            <nav><a href="index.html">⌂ Início</a><a href="salas.html">▣ Salas</a><a class="active" href="criterios.html">✓
+                    Critérios</a><a href="notas.html">✎ Notas</a><a href="ranking.html">🏆 Ranking</a></nav>
+            <div class="user-box">
+                <div class="avatar">P</div>
+                <div><strong>Professor</strong><small>Usuário autenticado</small></div>
+            </div>
+        </aside>
+        <main>
+            <header>
+                <div>
+                    <h1>Cadastro de Critérios</h1>
+                    <p>Defina os critérios e suas pontuações máximas.</p>
+                </div>
+            </header>
+            <section class="panel form-panel">
+                <h2>Novo critério</h2>
+                <form class="form-grid">
+                    <div><label>Nome do critério</label><input placeholder="Ex.: Decoração da sala"></div>
+                    <div><label>Pontuação máxima</label><input type="number" placeholder="Ex.: 10"></div><button
+                        class="btn primary">Cadastrar critério</button>
+                </form>
+            </section>
+            <section class="panel">
+                <h2>Critérios cadastrados</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Critério</th>
+                            <th>Máximo</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>Decoração da sala</td>
+                            <td>10</td>
+                            <td><button class="link">Editar</button> <button class="link danger">Excluir</button></td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>Participação dos alunos</td>
+                            <td>10</td>
+                            <td><button class="link">Editar</button> <button class="link danger">Excluir</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+            <footer>Sistema FESAC • Colégio Antônio Carlos</footer>
+        </main>
+    </div>
+<script src="js/cadastro.js"></script>
+</body>
+
+</html>
