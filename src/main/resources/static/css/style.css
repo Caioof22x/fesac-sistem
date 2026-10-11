@@ -1,0 +1,372 @@
+* {
+    box-sizing: border-box
+}
+
+body {
+    margin: 0;
+    font-family: Inter, Arial, sans-serif;
+    background: #f4f6f8;
+    color: #17202a
+}
+
+.app {
+    display: flex;
+    min-height: 100vh
+}
+
+.sidebar {
+    width: 250px;
+    background: #111827;
+    color: #fff;
+    padding: 26px 18px;
+    display: flex;
+    flex-direction: column
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 40px
+}
+
+.brand span,
+.logo {
+    width: 42px;
+    height: 42px;
+    border-radius: 10px;
+    background: #2563eb;
+    display: grid;
+    place-items: center;
+    font-size: 22px;
+    font-weight: 800
+}
+
+.brand strong {
+    display: block;
+    font-size: 20px
+}
+
+.brand small,
+.user-box small {
+    display: block;
+    color: #9ca3af;
+    margin-top: 3px
+}
+
+.sidebar nav {
+    display: flex;
+    flex-direction: column;
+    gap: 7px
+}
+
+.sidebar a {
+    color: #cbd5e1;
+    text-decoration: none;
+    padding: 12px 14px;
+    border-radius: 8px
+}
+
+.sidebar a:hover,
+.sidebar a.active {
+    background: #1d4ed8;
+    color: #fff
+}
+
+.user-box {
+    margin-top: auto;
+    border-top: 1px solid #374151;
+    padding-top: 18px;
+    display: flex;
+    gap: 10px;
+    align-items: center
+}
+
+.avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: #374151;
+    display: grid;
+    place-items: center
+}
+
+main {
+    flex: 1;
+    padding: 30px 40px;
+    max-width: 1400px;
+    margin: auto;
+    width: 100%
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 28px
+}
+
+h1 {
+    margin: 0 0 6px;
+    font-size: 30px
+}
+
+header p {
+    margin: 0;
+    color: #6b7280
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
+    margin-bottom: 24px
+}
+
+.card,
+.panel,
+.winner {
+    background: #fff;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    padding: 22px;
+    box-shadow: 0 2px 8px #00000008
+}
+
+.card span {
+    color: #6b7280;
+    font-size: 14px
+}
+
+.card strong {
+    display: block;
+    font-size: 28px;
+    margin-top: 10px
+}
+
+.highlight {
+    border-left: 4px solid #2563eb
+}
+
+.panel {
+    margin-bottom: 22px
+}
+
+.panel h2 {
+    margin-top: 0
+}
+
+.quick {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px
+}
+
+.quick a {
+    padding: 18px;
+    background: #f8fafc;
+    border: 1px solid #e5e7eb;
+    border-radius: 9px;
+    text-decoration: none;
+    color: #1d4ed8;
+    font-weight: 600
+}
+
+.btn {
+    border: 0;
+    border-radius: 8px;
+    padding: 11px 18px;
+    font-weight: 700;
+    cursor: pointer
+}
+
+.primary {
+    background: #2563eb;
+    color: white
+}
+
+.secondary {
+    background: #e5e7eb;
+    color: #111827
+}
+
+.full {
+    width: 100%;
+    margin-top: 10px
+}
+
+label {
+    display: block;
+    font-size: 14px;
+    font-weight: 700;
+    margin-bottom: 7px
+}
+
+input,
+select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    font-size: 15px;
+    background: #fff
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 220px;
+    gap: 18px;
+    align-items: end
+}
+
+.form-grid .btn {
+    height: 44px
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse
+}
+
+th,
+td {
+    text-align: left;
+    padding: 14px;
+    border-bottom: 1px solid #e5e7eb
+}
+
+th {
+    font-size: 13px;
+    color: #6b7280;
+    text-transform: uppercase
+}
+
+.link {
+    border: 0;
+    background: none;
+    color: #2563eb;
+    cursor: pointer
+}
+
+.danger {
+    color: #dc2626
+}
+
+.small-input {
+    max-width: 100px
+}
+
+.actions {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 18px
+}
+
+.winner {
+    background: #eff6ff;
+    border-color: #bfdbfe;
+    text-align: center;
+    margin-bottom: 22px
+}
+
+.winner span {
+    display: block;
+    color: #1d4ed8;
+    font-weight: 700
+}
+
+.winner strong {
+    display: block;
+    font-size: 34px;
+    margin: 8px
+}
+
+.winner small {
+    color: #475569
+}
+
+.first {
+    background: #f8fafc
+}
+
+footer {
+    text-align: center;
+    color: #9ca3af;
+    padding: 28px
+}
+
+.login-page {
+    min-height: 100vh;
+    display: grid;
+    place-items: center;
+    background: #111827
+}
+
+.login-card {
+    background: #fff;
+    width: min(420px, 92%);
+    padding: 38px;
+    border-radius: 16px;
+    text-align: center
+}
+
+.login-card .logo {
+    margin: 0 auto 18px
+}
+
+.login-card h1 {
+    font-size: 26px
+}
+
+.login-card p {
+    color: #6b7280;
+    margin-bottom: 28px
+}
+
+.login-card form {
+    text-align: left
+}
+
+.login-card small {
+    display: block;
+    color: #6b7280;
+    margin-top: 20px
+}
+
+@media(max-width:800px) {
+    .sidebar {
+        display: none
+    }
+
+    .cards,
+    .quick {
+        grid-template-columns: 1fr 1fr
+    }
+
+    .form-grid {
+        grid-template-columns: 1fr
+    }
+
+    .app main {
+        padding: 20px
+    }
+
+    .cards {
+        gap: 10px
+    }
+}
+
+@media(max-width:520px) {
+
+    .cards,
+    .quick {
+        grid-template-columns: 1fr
+    }
+
+    h1 {
+        font-size: 24px
+    }
+}
+
+
+.erro-login { color: #dc2626; font-size: 14px; margin: 12px 0 0; min-height: 18px; }
