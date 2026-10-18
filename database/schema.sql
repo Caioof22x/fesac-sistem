@@ -6,10 +6,9 @@ create table usuario (
 );
 
 create table sala (
-    id serial primary key,
-    nome varchar(100) not null,
-    turma varchar(50) not null
-);
+       id serial primary key,
+       nome varchar(100) not null
+   );
 
 create table criterio (
     id serial primary key,
@@ -29,3 +28,5 @@ alter table usuario enable row level security;
 alter table sala enable row level security;
 alter table criterio enable row level security;
 alter table nota enable row level security;
+
+
