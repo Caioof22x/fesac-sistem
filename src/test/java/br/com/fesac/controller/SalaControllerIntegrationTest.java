@@ -53,15 +53,15 @@ class SalaControllerIntegrationTest {
     @Test
     void listarSemLoginRetorna401() throws Exception {
         mockMvc.perform(get("/api/salas"))
-                .andExpect(status().isUnauthorized());
+            .andExpect(status().isUnauthorized());
     }
 
     @Test
     void cadastrarSemLoginRetorna401() throws Exception {
         mockMvc.perform(post("/api/salas")
-                        .contentType(MediaType.APPLICATION_JSON)
-                        .content(json("Sala A")))
-                .andExpect(status().isUnauthorized());
+            .contentType(MediaType.APPLICATION_JSON)
+            .content(json("Sala A")))
+            .andExpect(status().isUnauthorized());
         assertEquals(0, salaRepository.count());
     }
 
@@ -72,19 +72,19 @@ class SalaControllerIntegrationTest {
         criarSala("Sala B");
 
         mockMvc.perform(get("/api/salas"))
-                .andExpect(status().isOk())
-                .andExpect(jsonPath("$", hasSize(2)));
+            .andExpect(status().isOk())
+            .andExpect(jsonPath("$", hasSize(2)));
     }
 
     @Test
     @WithMockUser
     void cadastrarSalaValidaRetorna201() throws Exception {
         mockMvc.perform(post("/api/salas")
-                        .contentType(MediaType.APPLICATION_JSON)
-                        .content(json("Sala A")))
-                .andExpect(status().isCreated())
-                .andExpect(jsonPath("$.id").exists())
-                .andExpect(jsonPath("$.nome").value("Sala A"));
+            .contentType(MediaType.APPLICATION_JSON)
+            .content(json("Sala A")))
+            .andExpect(status().isCreated())
+            .andExpect(jsonPath("$.id").exists())
+            .andExpect(jsonPath("$.nome").value("Sala A"));
         assertEquals(1, salaRepository.count());
     }
 
@@ -92,9 +92,9 @@ class SalaControllerIntegrationTest {
     @WithMockUser
     void cadastrarSalaSemNomeRetorna400() throws Exception {
         mockMvc.perform(post("/api/salas")
-                        .contentType(MediaType.APPLICATION_JSON)
-                        .content(json("")))
-                .andExpect(status().isBadRequest());
+            .contentType(MediaType.APPLICATION_JSON)
+            .content(json("")))
+            .andExpect(status().isBadRequest());
         assertEquals(0, salaRepository.count());
     }
 
@@ -104,9 +104,9 @@ class SalaControllerIntegrationTest {
         criarSala("Sala A");
 
         mockMvc.perform(post("/api/salas")
-                        .contentType(MediaType.APPLICATION_JSON)
-                        .content(json("sala a")))
-                .andExpect(status().isConflict());
+            .contentType(MediaType.APPLICATION_JSON)
+            .content(json("sala a")))
+            .andExpect(status().isConflict());
         assertEquals(1, salaRepository.count());
     }
 
@@ -116,10 +116,10 @@ class SalaControllerIntegrationTest {
         Sala sala = criarSala("Sala A");
 
         mockMvc.perform(put("/api/salas/{id}", sala.getId())
-                        .contentType(MediaType.APPLICATION_JSON)
-                        .content(json("Sala Nova")))
-                .andExpect(status().isOk())
-                .andExpect(jsonPath("$.nome").value("Sala Nova"));
+            .contentType(MediaType.APPLICATION_JSON)
+            .content(json("Sala Nova")))
+            .andExpect(status().isOk())
+            .andExpect(jsonPath("$.nome").value("Sala Nova"));
         assertEquals("Sala Nova", salaRepository.findById(sala.getId()).orElseThrow().getNome());
     }
 
@@ -127,9 +127,9 @@ class SalaControllerIntegrationTest {
     @WithMockUser
     void editarSalaInexistenteRetorna404() throws Exception {
         mockMvc.perform(put("/api/salas/{id}", 9999)
-                        .contentType(MediaType.APPLICATION_JSON)
-                        .content(json("Sala Nova")))
-                .andExpect(status().isNotFound());
+            .contentType(MediaType.APPLICATION_JSON)
+            .content(json("Sala Nova")))
+            .andExpect(status().isNotFound());
     }
 
     @Test
@@ -138,7 +138,7 @@ class SalaControllerIntegrationTest {
         Sala sala = criarSala("Sala A");
 
         mockMvc.perform(delete("/api/salas/{id}", sala.getId()))
-                .andExpect(status().isNoContent());
+            .andExpect(status().isNoContent());
         assertEquals(0, salaRepository.count());
     }
 
@@ -146,6 +146,6 @@ class SalaControllerIntegrationTest {
     @WithMockUser
     void excluirSalaInexistenteRetorna404() throws Exception {
         mockMvc.perform(delete("/api/salas/{id}", 9999))
-                .andExpect(status().isNotFound());
+            .andExpect(status().isNotFound());
     }
 }

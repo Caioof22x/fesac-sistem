@@ -21,10 +21,6 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-/**
- * Teste de INTEGRAÇÃO dos endpoints /api/criterios: Spring completo + H2.
- * @WithMockUser simula um professor logado.
- */
 @SpringBootTest
 @AutoConfigureMockMvc
 class CriterioControllerIntegrationTest {
@@ -119,9 +115,9 @@ class CriterioControllerIntegrationTest {
     @WithMockUser
     void cadastrarCriterioSemNomeRetorna400() throws Exception {
         mockMvc.perform(post("/api/criterios")
-                        .contentType(MediaType.APPLICATION_JSON)
-                        .content(json("", "10.0")))
-                .andExpect(status().isBadRequest());
+            .contentType(MediaType.APPLICATION_JSON)
+            .content(json("", "10.0")))
+            .andExpect(status().isBadRequest());
         assertEquals(0, criterioRepository.count());
     }
 
@@ -131,9 +127,9 @@ class CriterioControllerIntegrationTest {
         criarCriterio("Criatividade", 10.0);
 
         mockMvc.perform(post("/api/criterios")
-                        .contentType(MediaType.APPLICATION_JSON)
-                        .content(json("criatividade", "7.0")))
-                .andExpect(status().isConflict());
+            .contentType(MediaType.APPLICATION_JSON)
+            .content(json("criatividade", "7.0")))
+            .andExpect(status().isConflict());
         assertEquals(1, criterioRepository.count());
     }
 
@@ -143,11 +139,11 @@ class CriterioControllerIntegrationTest {
         Criterio criterio = criarCriterio("Criatividade", 10.0);
 
         mockMvc.perform(put("/api/criterios/{id}", criterio.getId())
-                        .contentType(MediaType.APPLICATION_JSON)
-                        .content(json("Originalidade", "8.5")))
-                .andExpect(status().isOk())
-                .andExpect(jsonPath("$.nome").value("Originalidade"))
-                .andExpect(jsonPath("$.pesoMaximo").value(8.5));
+            .contentType(MediaType.APPLICATION_JSON)
+            .content(json("Originalidade", "8.5")))
+            .andExpect(status().isOk())
+            .andExpect(jsonPath("$.nome").value("Originalidade"))
+            .andExpect(jsonPath("$.pesoMaximo").value(8.5));
         Criterio salvo = criterioRepository.findById(criterio.getId()).orElseThrow();
         assertEquals("Originalidade", salvo.getNome());
         assertEquals(8.5, salvo.getPesoMaximo(), 0.001);
@@ -157,9 +153,9 @@ class CriterioControllerIntegrationTest {
     @WithMockUser
     void editarCriterioInexistenteRetorna404() throws Exception {
         mockMvc.perform(put("/api/criterios/{id}", 9999)
-                        .contentType(MediaType.APPLICATION_JSON)
-                        .content(json("Originalidade", "8.5")))
-                .andExpect(status().isNotFound());
+            .contentType(MediaType.APPLICATION_JSON)
+            .content(json("Originalidade", "8.5")))
+            .andExpect(status().isNotFound());
     }
 
     @Test
@@ -168,7 +164,7 @@ class CriterioControllerIntegrationTest {
         Criterio criterio = criarCriterio("Criatividade", 10.0);
 
         mockMvc.perform(delete("/api/criterios/{id}", criterio.getId()))
-                .andExpect(status().isNoContent());
+            .andExpect(status().isNoContent());
         assertEquals(0, criterioRepository.count());
     }
 
@@ -176,6 +172,6 @@ class CriterioControllerIntegrationTest {
     @WithMockUser
     void excluirCriterioInexistenteRetorna404() throws Exception {
         mockMvc.perform(delete("/api/criterios/{id}", 9999))
-                .andExpect(status().isNotFound());
+            .andExpect(status().isNotFound());
     }
 }

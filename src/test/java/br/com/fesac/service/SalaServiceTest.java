@@ -20,10 +20,6 @@ import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
-/**
- * Teste UNITÁRIO do SalaService: o SalaRepository é um dublê (mock),
- * então nenhum banco é usado. Aqui testamos só as regras do service.
- */
 @ExtendWith(MockitoExtension.class)
 class SalaServiceTest {
 
@@ -66,7 +62,7 @@ class SalaServiceTest {
         when(salaRepository.existsByNomeIgnoreCase("Sala A")).thenReturn(true);
 
         ResponseStatusException erro = assertThrows(ResponseStatusException.class,
-                () -> service.cadastrar(new SalaRequest("Sala A")));
+            () -> service.cadastrar(new SalaRequest("Sala A")));
 
         assertEquals(409, erro.getStatusCode().value());
         verify(salaRepository, never()).save(any(Sala.class));
@@ -88,7 +84,7 @@ class SalaServiceTest {
         when(salaRepository.findById(99L)).thenReturn(Optional.empty());
 
         ResponseStatusException erro = assertThrows(ResponseStatusException.class,
-                () -> service.editar(99L, new SalaRequest("Sala Nova")));
+            () -> service.editar(99L, new SalaRequest("Sala Nova")));
 
         assertEquals(404, erro.getStatusCode().value());
         verify(salaRepository, never()).save(any(Sala.class));
@@ -100,7 +96,7 @@ class SalaServiceTest {
         when(salaRepository.existsByNomeIgnoreCaseAndIdNot("Sala B", 1L)).thenReturn(true);
 
         ResponseStatusException erro = assertThrows(ResponseStatusException.class,
-                () -> service.editar(1L, new SalaRequest("Sala B")));
+            () -> service.editar(1L, new SalaRequest("Sala B")));
 
         assertEquals(409, erro.getStatusCode().value());
         verify(salaRepository, never()).save(any(Sala.class));
@@ -120,8 +116,7 @@ class SalaServiceTest {
     void naoDeveExcluirSalaInexistente() {
         when(salaRepository.findById(99L)).thenReturn(Optional.empty());
 
-        ResponseStatusException erro = assertThrows(ResponseStatusException.class,
-                () -> service.excluir(99L));
+        ResponseStatusException erro = assertThrows(ResponseStatusException.class, () -> service.excluir(99L));
 
         assertEquals(404, erro.getStatusCode().value());
         verify(salaRepository, never()).delete(any(Sala.class));

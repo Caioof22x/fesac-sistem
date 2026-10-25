@@ -40,7 +40,7 @@ class CriterioServiceTest {
     @Test
     void deveListarTodosOsCriterios() {
         when(criterioRepository.findAll())
-                .thenReturn(List.of(criterio(1L, "Criatividade", 10.0), criterio(2L, "Organizacao", 5.0)));
+            .thenReturn(List.of(criterio(1L, "Criatividade", 10.0), criterio(2L, "Organizacao", 5.0)));
 
         List<Criterio> resultado = service.listar();
 
@@ -64,7 +64,7 @@ class CriterioServiceTest {
         when(criterioRepository.existsByNomeIgnoreCase("Criatividade")).thenReturn(true);
 
         ResponseStatusException erro = assertThrows(ResponseStatusException.class,
-                () -> service.cadastrar(new CriterioRequest("Criatividade", 10.0)));
+            () -> service.cadastrar(new CriterioRequest("Criatividade", 10.0)));
 
         assertEquals(409, erro.getStatusCode().value());
         verify(criterioRepository, never()).save(any(Criterio.class));
@@ -87,7 +87,7 @@ class CriterioServiceTest {
         when(criterioRepository.findById(99L)).thenReturn(Optional.empty());
 
         ResponseStatusException erro = assertThrows(ResponseStatusException.class,
-                () -> service.editar(99L, new CriterioRequest("Originalidade", 8.5)));
+            () -> service.editar(99L, new CriterioRequest("Originalidade", 8.5)));
 
         assertEquals(404, erro.getStatusCode().value());
         verify(criterioRepository, never()).save(any(Criterio.class));
@@ -99,7 +99,7 @@ class CriterioServiceTest {
         when(criterioRepository.existsByNomeIgnoreCaseAndIdNot("Organizacao", 1L)).thenReturn(true);
 
         ResponseStatusException erro = assertThrows(ResponseStatusException.class,
-                () -> service.editar(1L, new CriterioRequest("Organizacao", 10.0)));
+            () -> service.editar(1L, new CriterioRequest("Organizacao", 10.0)));
 
         assertEquals(409, erro.getStatusCode().value());
         verify(criterioRepository, never()).save(any(Criterio.class));
@@ -120,7 +120,7 @@ class CriterioServiceTest {
         when(criterioRepository.findById(99L)).thenReturn(Optional.empty());
 
         ResponseStatusException erro = assertThrows(ResponseStatusException.class,
-                () -> service.excluir(99L));
+            () -> service.excluir(99L));
 
         assertEquals(404, erro.getStatusCode().value());
         verify(criterioRepository, never()).delete(any(Criterio.class));
