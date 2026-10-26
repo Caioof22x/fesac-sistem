@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <title>Salas | FESAC</title>
     <link rel="stylesheet" href="css/style.css">
+    <script src="js/guard.js"></script>
 </head>
 
 <body>
@@ -30,39 +31,30 @@
             </header>
             <section class="panel form-panel">
                 <h2>Nova sala</h2>
-                <form class="form-grid">
-                    <div><label>Nome da sala</label><input placeholder="Ex.: 3º A"></div><button
-                        class="btn primary">Cadastrar sala</button>
+                <form class="form-grid" id="form-sala" novalidate>
+                    <div><label for="nome">Nome da sala</label><input id="nome" maxlength="100" placeholder="Ex.: 3º A"></div>
+                    <button class="btn primary" type="submit">Cadastrar sala</button>
                 </form>
+                <p class="erro-login" id="erro" role="alert"></p>
             </section>
             <section class="panel">
                 <h2>Salas cadastradas</h2>
                 <table>
                     <thead>
-                        <tr>
-                            <th>#</th>
-                            <th>Sala</th>
-                            <th>Ações</th>
-                        </tr>
+                    <tr>
+                        <th>#</th>
+                        <th>Sala</th>
+                        <th>Ações</th>
+                    </tr>
                     </thead>
-                    <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>3º A</td>
-                            <td><button class="link">Editar</button> <button class="link danger">Excluir</button></td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>3º B</td>
-                            <td><button class="link">Editar</button> <button class="link danger">Excluir</button></td>
-                        </tr>
-                    </tbody>
+                    <tbody id="lista"></tbody>
                 </table>
             </section>
             <footer>Sistema FESAC • Colégio Antônio Carlos</footer>
         </main>
     </div>
-<script src="js/cadastro.js"></script>
+    <script src="js/comum.js"></script>
+    <script src="js/salas.js"></script>
 </body>
 
 </html>
