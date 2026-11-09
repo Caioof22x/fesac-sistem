@@ -31,10 +31,7 @@
             </header>
             <section class="panel">
                 <div class="form-grid">
-                    <div><label>Selecionar sala</label><select>
-                            <option>3º A</option>
-                            <option>3º B</option>
-                        </select></div>
+                    <div><label for="sala">Selecionar sala</label><select id="sala"></select></div>
                 </div>
             </section>
             <section class="panel">
@@ -47,29 +44,16 @@
                             <th>Nota</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        <tr>
-                            <td>Decoração da sala</td>
-                            <td>10</td>
-                            <td><input class="small-input" type="number" min="0" max="10" placeholder="0"></td>
-                        </tr>
-                        <tr>
-                            <td>Participação dos alunos</td>
-                            <td>10</td>
-                            <td><input class="small-input" type="number" min="0" max="10" placeholder="0"></td>
-                        </tr>
-                        <tr>
-                            <td>Disciplina</td>
-                            <td>10</td>
-                            <td><input class="small-input" type="number" min="0" max="10" placeholder="0"></td>
-                        </tr>
-                    </tbody>
+                    <tbody id="lista"></tbody>
                 </table>
-                <div class="actions"><button class="btn primary">Salvar notas</button></div>
+                <p id="mensagem" role="alert"></p>
+                <div class="actions"><button class="btn primary" id="salvar" type="button">Salvar notas</button></div>
             </section>
             <footer>Sistema FESAC • Colégio Antônio Carlos</footer>
         </main>
     </div>
+<script src="js/comum.js"></script>
+<script src="js/notas.js"></script>
 </body>
 
 </html>
