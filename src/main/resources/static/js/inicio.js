@@ -1,11 +1,4 @@
 (function () {
-  const sair = document.getElementById('sair');
-
-  sair.addEventListener('click', function () {
-    fetch('/logout', { method: 'POST', credentials: 'same-origin' })
-      .finally(function () { location.replace('login.html'); });
-  });
-
   Promise.all([
     Comum.chamar('/api/salas'),
     Comum.chamar('/api/criterios'),
