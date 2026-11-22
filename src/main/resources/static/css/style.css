@@ -334,8 +334,46 @@ footer {
 }
 
 @media(max-width:800px) {
+    .app {
+        flex-direction: column
+    }
+
     .sidebar {
+        width: 100%;
+        padding: 14px 16px
+    }
+
+    .brand {
+        margin-bottom: 12px
+    }
+
+    .sidebar nav {
+        flex-direction: row;
+        overflow-x: auto;
+        gap: 4px
+    }
+
+    .sidebar a {
+        white-space: nowrap;
+        padding: 10px 12px
+    }
+
+    .user-box {
         display: none
+    }
+
+    header {
+        flex-wrap: wrap;
+        gap: 12px
+    }
+
+    .panel {
+        overflow-x: auto
+    }
+
+    th,
+    td {
+        padding: 10px
     }
 
     .cards,
