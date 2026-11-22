@@ -28,14 +28,15 @@
                 <div>
                     <h1>Painel FESAC</h1>
                     <p>Gerenciamento das notas da competição.</p>
-                </div><button class="btn secondary">Sair</button>
+                </div><button class="btn secondary" id="sair" type="button">Sair</button>
             </header>
             <section class="cards">
-                <div class="card"><span>Salas</span><strong>8</strong></div>
-                <div class="card"><span>Critérios</span><strong>4</strong></div>
-                <div class="card"><span>Notas lançadas</span><strong>24</strong></div>
-                <div class="card highlight"><span>Líder atual</span><strong>3º A</strong></div>
+                <div class="card"><span>Salas</span><strong id="total-salas">…</strong></div>
+                <div class="card"><span>Critérios</span><strong id="total-criterios">…</strong></div>
+                <div class="card"><span>Salas avaliadas</span><strong id="salas-avaliadas">…</strong></div>
+                <div class="card highlight"><span>Líder atual</span><strong id="lider">…</strong></div>
             </section>
+            <p id="mensagem" class="erro-login" role="alert"></p>
             <section class="panel">
                 <h2>Acesso rápido</h2>
                 <div class="quick"><a href="salas.html">Cadastrar sala</a><a href="criterios.html">Cadastrar
@@ -44,6 +45,8 @@
             <footer>Sistema FESAC • Colégio Antônio Carlos</footer>
         </main>
     </div>
+<script src="js/comum.js"></script>
+<script src="js/inicio.js"></script>
 </body>
 
 </html>
