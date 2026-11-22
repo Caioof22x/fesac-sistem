@@ -29,8 +29,7 @@
                     <p>Resultado das salas participantes da FESAC.</p>
                 </div>
             </header>
-            <section class="winner"><span>🏆 Sala vencedora</span><strong>3º A</strong><small>32 pontos</small>
-            </section>
+            <section class="winner" id="vencedor"><span>🏆 Sala vencedora</span><strong>…</strong><small>Carregando resultado</small></section>
             <section class="panel">
                 <h2>Classificação</h2>
                 <table>
@@ -41,33 +40,15 @@
                             <th>Pontuação</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        <tr class="first">
-                            <td>🥇 1º</td>
-                            <td>3º A</td>
-                            <td><strong>32</strong></td>
-                        </tr>
-                        <tr>
-                            <td>🥈 2º</td>
-                            <td>3º B</td>
-                            <td>29</td>
-                        </tr>
-                        <tr>
-                            <td>🥉 3º</td>
-                            <td>2º A</td>
-                            <td>27</td>
-                        </tr>
-                        <tr>
-                            <td>4º</td>
-                            <td>2º B</td>
-                            <td>24</td>
-                        </tr>
-                    </tbody>
+                    <tbody id="lista"></tbody>
                 </table>
+                <p id="mensagem" class="erro-login" role="alert"></p>
             </section>
             <footer>Sistema FESAC • Colégio Antônio Carlos</footer>
         </main>
     </div>
+<script src="js/comum.js"></script>
+<script src="js/ranking.js"></script>
 </body>
 
 </html>
