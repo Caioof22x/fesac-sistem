@@ -15,6 +15,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class NotaService {
@@ -33,6 +35,10 @@ public class NotaService {
         Usuario professor = userRepository.findByEmail(emailProfessor)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.UNAUTHORIZED, "Usuário não encontrado"));
 
+        if (notaRepository.existsBySalaIdAndCriterioId(sala.getId(), criterio.getId())) {
+            throw new ResponseStatusException(HttpStatus.CONFLICT, "Essa sala já tem nota lançada nesse critério");
+        }
+
         if (request.valor() > criterio.getPesoMaximo()) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST,
                     "A nota não pode ser maior que o peso máximo do critério (" + criterio.getPesoMaximo() + ")");
@@ -44,5 +50,10 @@ public class NotaService {
         nota.setUsuario(professor);
         nota.setValor(request.valor());
         return notaRepository.save(nota);
+    }
+
+    @Transactional(readOnly = true)
+    public List<Nota> listarPorSala(Long salaId) {
+        return notaRepository.findBySalaId(salaId);
     }
 }
