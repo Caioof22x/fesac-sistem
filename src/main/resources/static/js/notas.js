@@ -1,36 +1,23 @@
 (function () {
-  const CHAVE = 'fesac_notas_lancadas';
   const seletor = document.getElementById('sala');
   const corpo = document.getElementById('lista');
   const botao = document.getElementById('salvar');
   const mensagem = document.getElementById('mensagem');
   let criterios = [];
+  let lancadas = {};
 
   function mostrar(texto, sucesso) {
     mensagem.textContent = texto || '';
     mensagem.className = sucesso ? 'sucesso-login' : 'erro-login';
   }
 
-  function lerLancadas() {
-    try {
-      return JSON.parse(localStorage.getItem(CHAVE)) || {};
-    } catch (e) {
-      return {};
-    }
-  }
-
-  function guardarLancada(salaId, criterioId, valor) {
-    const todas = lerLancadas();
-    todas[salaId] = todas[salaId] || {};
-    todas[salaId][criterioId] = valor;
-    try {
-      localStorage.setItem(CHAVE, JSON.stringify(todas));
-    } catch (e) { /* sem armazenamento: segue sem lembrar */ }
+  async function carregarLancadas() {
+    const notas = await Comum.chamar('/api/notas?salaId=' + Number(seletor.value));
+    lancadas = {};
+    notas.forEach(function (n) { lancadas[n.criterioId] = n.valor; });
   }
 
   function desenhar(manterMensagem) {
-    const salaId = Number(seletor.value);
-    const lancadas = lerLancadas()[salaId] || {};
     if (!manterMensagem) mostrar('');
 
     corpo.innerHTML = criterios.map(function (c) {
@@ -89,12 +76,13 @@
           method: 'POST',
           body: JSON.stringify({ salaId: salaId, criterioId: envio.criterio.id, valor: envio.valor }),
         });
-        guardarLancada(salaId, envio.criterio.id, envio.valor);
         enviadas++;
       }
+      await carregarLancadas();
       desenhar(true);
       mostrar('Notas salvas com sucesso.', true);
     } catch (e) {
+      await carregarLancadas().catch(function () {});
       desenhar(true);
       mostrar((enviadas ? enviadas + ' nota(s) salva(s), mas deu erro: ' : '') + e.message);
     }
@@ -116,7 +104,10 @@
     seletor.innerHTML = salas.map(function (s) {
       return '<option value="' + s.id + '">' + Comum.esc(s.nome) + '</option>';
     }).join('');
-    seletor.addEventListener('change', function () { desenhar(false); });
+    seletor.addEventListener('change', function () {
+      carregarLancadas().then(function () { desenhar(false); }).catch(function (e) { mostrar(e.message); });
+    });
+    await carregarLancadas();
     desenhar(false);
   }
 
