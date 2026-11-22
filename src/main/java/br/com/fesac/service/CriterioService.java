@@ -3,6 +3,7 @@ package br.com.fesac.service;
 import br.com.fesac.dto.CriterioRequest;
 import br.com.fesac.model.Criterio;
 import br.com.fesac.repository.CriterioRepository;
+import br.com.fesac.repository.NotaRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
@@ -16,6 +17,7 @@ import java.util.List;
 public class CriterioService {
 
     private final CriterioRepository criterioRepository;
+    private final NotaRepository notaRepository;
 
     public List<Criterio> listar() {
         return criterioRepository.findAll();
@@ -47,6 +49,9 @@ public class CriterioService {
 
     @Transactional
     public void excluir(Long id) {
+        if (notaRepository.existsByCriterioId(id)) {
+            throw new ResponseStatusException(HttpStatus.CONFLICT, "Não é possível excluir: o critério possui notas lançadas");
+        }
         criterioRepository.delete(buscar(id));
     }
 

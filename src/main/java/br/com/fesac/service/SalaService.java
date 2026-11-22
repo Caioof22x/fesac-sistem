@@ -3,6 +3,7 @@ package br.com.fesac.service;
 import br.com.fesac.dto.SalaRequest;
 import br.com.fesac.model.Sala;
 import br.com.fesac.repository.SalaRepository;
+import br.com.fesac.repository.NotaRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
@@ -16,6 +17,7 @@ import java.util.List;
 public class SalaService {
 
     private final SalaRepository salaRepository;
+    private final NotaRepository notaRepository;
 
     public List<Sala> listar() {
         return salaRepository.findAll();
@@ -45,6 +47,9 @@ public class SalaService {
 
     @Transactional
     public void excluir(Long id) {
+        if (notaRepository.existsBySalaId(id)) {
+            throw new ResponseStatusException(HttpStatus.CONFLICT, "Não é possível excluir: a sala possui notas lançadas");
+        }
         salaRepository.delete(buscar(id));
     }
 
