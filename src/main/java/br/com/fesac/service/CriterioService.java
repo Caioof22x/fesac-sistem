@@ -49,10 +49,11 @@ public class CriterioService {
 
     @Transactional
     public void excluir(Long id) {
+        Criterio criterio = buscar(id);
         if (notaRepository.existsByCriterioId(id)) {
             throw new ResponseStatusException(HttpStatus.CONFLICT, "Não é possível excluir: o critério possui notas lançadas");
         }
-        criterioRepository.delete(buscar(id));
+        criterioRepository.delete(criterio);
     }
 
     private Criterio buscar(Long id) {

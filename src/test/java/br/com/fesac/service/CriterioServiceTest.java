@@ -2,6 +2,7 @@ package br.com.fesac.service;
 
 import br.com.fesac.dto.CriterioRequest;
 import br.com.fesac.model.Criterio;
+import br.com.fesac.repository.NotaRepository;
 import br.com.fesac.repository.CriterioRepository;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -25,6 +26,9 @@ class CriterioServiceTest {
 
     @Mock
     private CriterioRepository criterioRepository;
+
+    @Mock
+    private NotaRepository notaRepository;
 
     @InjectMocks
     private CriterioService service;

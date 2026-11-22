@@ -47,10 +47,11 @@ public class SalaService {
 
     @Transactional
     public void excluir(Long id) {
+        Sala sala = buscar(id);
         if (notaRepository.existsBySalaId(id)) {
             throw new ResponseStatusException(HttpStatus.CONFLICT, "Não é possível excluir: a sala possui notas lançadas");
         }
-        salaRepository.delete(buscar(id));
+        salaRepository.delete(sala);
     }
 
     private Sala buscar(Long id) {

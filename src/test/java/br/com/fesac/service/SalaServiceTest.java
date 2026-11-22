@@ -2,6 +2,7 @@ package br.com.fesac.service;
 
 import br.com.fesac.dto.SalaRequest;
 import br.com.fesac.model.Sala;
+import br.com.fesac.repository.NotaRepository;
 import br.com.fesac.repository.SalaRepository;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -25,6 +26,9 @@ class SalaServiceTest {
 
     @Mock
     private SalaRepository salaRepository;
+
+    @Mock
+    private NotaRepository notaRepository;
 
     @InjectMocks
     private SalaService service;
